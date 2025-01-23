@@ -43,8 +43,14 @@ function ajouter_lien_admin_dans_menu($items, $args) {
 }
 add_filter('wp_nav_menu_items', 'ajouter_lien_admin_dans_menu', 10, 2);
 
-// Enregistrer un emplacement de menu pour le header
+// Enregistrer un emplacement de menu dans le back office de WP pour le header
 function enregistrer_menu_header() {
     register_nav_menu('header-menu', __('Menu Header'));
 }
 add_action('after_setup_theme', 'enregistrer_menu_header');
+
+// Enregistrer un emplacement de menu dans le back office de WP pour le footer
+function register_footer_menu() {
+    register_nav_menu('footer-menu', __('Menu Footer', 'votre-theme-textdomain'));
+}
+add_action('init', 'register_footer_menu');
